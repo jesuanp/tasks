@@ -1,15 +1,31 @@
-import React from "react";
+import React, {useContext} from "react";
+import {useNavigate} from 'react-router-dom';
+import AuthContext from "../../context/autenticacion/authContext";
+
 
 const Barra = () => {
+
+    const history = useNavigate();
+
+    const authContext = useContext(AuthContext);
+    const {usuario, cerrarSesion} = authContext;
+
+    const handleClick = () => {
+        cerrarSesion();
+        history('/');
+    }
 
     return (
         <header
             className="app-header"
         >
-            <p className="nombre-usuario">Hola <span>Wesuan</span> </p>
+            {usuario ? <p className="nombre-usuario">Hola <span>{usuario.nombre}</span> </p> : null}
 
             <nav className="nav-principal">
-                <a href="#!">Cerrar sesión</a>
+                <button
+                    className='btn btn-blank cerrar-sesion'
+                    onClick={handleClick}
+                >Cerrar sesion</button>
             </nav>
 
         </header>

@@ -8,7 +8,7 @@ const Tarea = ({tarea}) => {
     const {proyecto} = proyectosContext;
 
     const tareasContext = useContext(tareaContext);
-    const {eliminarTarea, obtenerTareas, cambiarEstadoTarea, guardarTareaActual} = tareasContext;
+    const {eliminarTarea, obtenerTareas, actualizarTarea, guardarTareaActual} = tareasContext;
 
     const tareaEliminar = id => {
         eliminarTarea(id, proyecto[0]._id);
@@ -16,9 +16,11 @@ const Tarea = ({tarea}) => {
     };
 
     const cambiarEstado = tarea => {
+        console.log('antes: ', tarea.estado);
         tarea.estado = !tarea.estado;
+        console.log('despues: ', tarea.estado);
 
-        cambiarEstadoTarea(tarea)
+        actualizarTarea(tarea)
     };
 
     const seleccionarTarea = tarea => {

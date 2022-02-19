@@ -88,7 +88,7 @@ module.exports = {
             const nuevaTarea = {};
 
             if(nombre) nuevaTarea.nombre = nombre;
-            if(estado) nuevaTarea.estado = estado;
+            nuevaTarea.estado = estado;
 
             const tareaActializada = await Tarea.findByIdAndUpdate({_id: req.params.id}, nuevaTarea, {new: true});
 

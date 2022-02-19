@@ -35,7 +35,7 @@ export default (state, action) => {
         case ACTIALIZAR_TAREA:
         case ESTADO_TAREA: return {
             ...state,
-            tareasproyectos: state.tareasproyectos.map(t => t.id === action.payload.id ? action.payload : t),
+            tareasproyectos: state.tareasproyectos.map(t => t._id === action.payload._id ? action.payload : t),
             tareaseleccionada: null
         }
 

@@ -18,7 +18,7 @@ const FormTareas = () => {
     const {proyecto} = proyectosContext;
 
     const tareasContext = useContext(tareaContext);
-    const {tareaseleccionada, errortarea, agregarTarea, validarTarea, obtenerTareas, actualizarTarea} = tareasContext;
+    const {tareaseleccionada, errortarea, agregarTarea, validarTarea, actualizarTarea} = tareasContext;
 
     useEffect(()=>{
         if(tareaseleccionada !== null) setTarea(tareaseleccionada);

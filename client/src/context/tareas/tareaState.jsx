@@ -94,11 +94,22 @@ const TareaState = (props) => {
     }
 
     //actualiza la tarea seleccionada
-    const actualizarTarea = tarea => {
-        dispatch({
-            type: ACTIALIZAR_TAREA,
-            payload: tarea
-        })
+    const actualizarTarea = async tarea => {
+
+        try{
+
+            const respuesta = await clienteAxios.put(`/api/tareas/${tarea._id}`, tarea);
+    
+            console.log(tarea)
+
+            dispatch({
+                type: ACTIALIZAR_TAREA,
+                payload: respuesta.data.tareaActializada
+            })
+        }
+        catch(err){
+            console.log(err);
+        }
     }
 
     return (
